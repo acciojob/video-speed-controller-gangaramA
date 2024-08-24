@@ -6,6 +6,20 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+	 <div class="video-player">
+    <video   
+ id="video" src="https://www.w3schools.com/html/mov_bbb.mp4" controls muted></video>
+    <div class="controls">
+      <button id="play-pause" class="player__button">►</button>
+      <div class="progress-bar">
+        <div class="progress__filled"></div>
+      </div>
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+      <input type="range" id="playbackSpeed" min="0.5" max="2" step="0.1" value="1">
+      <button id="rewind">« 10s</button>
+      <button id="forward">25s »</button>
+    </div>
+  </div>
 
   <div class="wrapper">
     <video class="flex" width="765" height="430" src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" controls></video>

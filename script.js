@@ -1,9 +1,38 @@
-const inputs = document.querySelectorAll('.controls input');
+const video = document.getElementById('video');
+const playPauseBtn = document.getElementById('play-pause');
+const progressFilled = document.querySelector('.progress__filled');
+const volumeInput = document.getElementById('volume');
+const playbackSpeedInput = document.getElementById('playbackSpeed');
+const rewindBtn = document.getElementById('rewind');
+const forwardBtn = document.getElementById('forward');
 
-    function handleUpdate() {
-      const suffix = this.dataset.sizing || '';
-      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
-    }
+// Update video progress bar
+video.addEventListener('timeupdate', () => {
+  const progress = (video.currentTime / video.duration) * 100;
+  progressFilled.style.width = `${progress}%`;
+});
 
-    inputs.forEach(input => input.addEventListener('change', handleUpdate));
-    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+// Play/Pause toggle
+playPauseBtn.addEventListener('click', () => {
+  if (video.paused) {
+    video.play();
+    playPauseBtn.textContent = '❚ ❚';
+  } else {
+    video.pause();
+    playPauseBtn.textContent = '►';
+  }
+});
+
+// Volume control
+volumeInput.addEventListener('input', () => {
+  video.volume = volumeInput.value;
+});
+
+// Playback speed control
+playbackSpeedInput.addEventListener('input', () => {
+  video.playbackRate = playbackSpeedInput.value;
+});
+
+// Rewind button
+rewindBtn.addEventListener('click', () => {
+  video.currentTime -= 1
